@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerComposeProjectPath>../../docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'GraphQL.API' " />
+  <ItemGroup>
+    <PackageReference Include="HotChocolate" Version="11.0.9" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="11.0.9" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Twitter.MongoDB.Core\Twitter.MongoDB.Core.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Twitter.MongoDB.Infra\Twitter.MongoDB.Infra.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Types\" />
+    <None Remove="Queries\" />
+    <None Remove="Configurations\" />
+    <None Remove="Mutations\" />
+    <None Remove="Subscriptions\" />
+    <None Remove="Resolvers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Types\" />
+    <Folder Include="Queries\" />
+    <Folder Include="Configurations\" />
+    <Folder Include="Mutations\" />
+    <Folder Include="Subscriptions\" />
+    <Folder Include="Resolvers\" />
+  </ItemGroup>
+</Project>
